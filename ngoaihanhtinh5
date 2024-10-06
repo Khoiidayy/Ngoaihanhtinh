@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ngôn Ngữ Ngoại Hành Tinh</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff;
+        }
+        header {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            margin: 10px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        main {
+            padding: 20px;
+        }
+        section {
+            display: none; /* Ẩn tất cả các mục */
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #4caf50;
+            color: white;
+        }
+        .active {
+            display: block; /* Hiển thị mục đang hoạt động */
+        }
+        .login-form, .score-form, .assignment-form, .note-form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .login-form input, .score-form input, .assignment-form input, .note-form input {
+            margin: 5px 0;
+            padding: 10px;
+        }
+        .notes-list {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Ngôn Ngữ Ngoại Hành Tinh</h1>
+    <nav>
+        <a href="#" onclick="showSection('hoc-tap')">Học Tập</a>
+        <a href="#" onclick="showSection('diem-gv')">Điểm (Giáo viên)</a>
+        <a href="#" onclick="showSection('diem-hs')">Điểm (Học sinh)</a>
+        <a href="#" onclick="showSection('note')">Note</a>
+        <a href="#" onclick="showSection('tai-khoan')">Tài Khoản</a>
+        <a href="#" onclick="showSection('bai-tap')">Bài Tập Về Nhà</a>
+    </nav>
+</header>
+
+<main>
+    <section id="hoc-tap" class="active">
+        <h2>Học Tập</h2>
+        <p>Chào mừng các bạn đến với phần học tập! Tạo đề kiểm tra và gắn file nghe vào đây.</p>
+        <form>
+            <label for="exam-title">Tiêu đề Đề Thi:</label>
+            <input type="text" id="exam-title" required>
+            <label for="exam-file">Gắn File Nghe:</label>
+            <input type="file" id="exam-file" accept="audio/*" required>
+            <button type="submit">Tạo Đề Thi</button>
+        </form>
+        <h3>Nghe File</h3>
+        <audio controls id="audio-player" style="display:none;">
+            <source id="audio-source" src="" type="audio/mpeg">
+            Trình duyệt của bạn không hỗ trợ audio.
+        </audio>
+    </section>
+
+    <section id="diem-gv">
+        <h2>Điểm (Giáo viên)</h2>
+        <form class="score-form">
+            <label for="student-name">Tên Học Sinh:</label>
+            <input type="text" id="student-name" required>
+            <label for="student-score">Điểm:</label>
+            <input type="number" id="student-score" required>
+            <button type="submit">Nhập Điểm</button>
+        </form>
+    </section>
+
+    <section id="diem-hs">
+        <h2>Điểm (Học sinh)</h2>
+        <p>Các bạn có thể xem điểm của mình tại đây.</p>
+        <!-- Nội dung điểm sẽ được thêm vào đây -->
+    </section>
+
+    <section id="note">
+        <h2>Note</h2>
+        <form class="note-form" id="note-form">
+            <label for="note-input">Nhập Ghi Chú:</label>
+            <input type="text" id="note-input" required>
+            <button type="submit">Lưu Ghi Chú</button>
+        </form>
+        <div class="notes-list" id="notes-list">
+            <h3>Ghi Chú của bạn:</h3>
+            <ul id="note-items"></ul>
+        </div>
+    </section>
+
+    <section id="tai-khoan">
+        <h2>Tài Khoản</h2>
+        <form class="login-form">
+            <label for="gmail">Đăng Nhập Gmail:</label>
+            <input type="email" id="gmail" required>
+            <label for="full-name">Họ Tên:</label>
+            <input type="text" id="full-name" required>
+            <button type="submit">Đăng Nhập</button>
+        </form>
+    </section>
+
+    <section id="bai-tap">
+        <h2>Bài Tập Về Nhà</h2>
+        <form class="assignment-form">
+            <label for="assignment-title">Tiêu đề Bài Tập:</label>
+            <input type="text" id="assignment-title" required>
+            <label for="assignment-description">Mô tả Bài Tập:</label>
+            <input type="text" id="assignment-description" required>
+            <button type="submit">Giao Bài Tập</button>
+        </form>
+        <h3>Thống Kê Bài Tập</h3>
+        <p>Các bài tập học sinh đã làm sẽ được thống kê ở đây.</p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Ngôn Ngữ Ngoại Hành Tinh. Tất cả quyền được bảo lưu.</p>
+    <p><a href="https://example.com" style="color: white;">Liên kết ngoài</a></p>
+</footer>
+
+<script>
+    const examFileInput = document.getElementById('exam-file');
+    const audioPlayer = document.getElementById('audio-player');
+    const audioSource = document.getElementById('audio-source');
+
+    examFileInput.addEventListener('change', function() {
+        const file = examFileInput.files[0];
+        if (file) {
+            const url = URL.createObjectURL(file);
+            audioSource.src = url;
+            audioPlayer.style.display = 'block';
+            audioPlayer.load();
+        }
+    });
+
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('main > section');
+        sections.forEach(section => {
+            section.classList.remove('active');
+        });
+        document.getElementById(sectionId).classList.add('active');
+    }
+
+    // Xử lý ghi chú
+    const noteForm = document.getElementById('note-form');
+    const noteInput = document.getElementById('note-input');
+    const noteItems = document.getElementById('note-items');
+
+    noteForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn chặn việc gửi form
+        const noteText = noteInput.value;
+        if (noteText) {
+            const li = document.createElement('li');
+            li.textContent = noteText;
+            noteItems.appendChild(li);
+            noteInput.value = ''; // Xóa ô nhập sau khi lưu
+        }
+    });
+</script>
+
+</body>
+</html>
